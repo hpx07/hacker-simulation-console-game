@@ -182,47 +182,115 @@
         <button class="btn btn-secondary" onclick="copyRunCommand()">Copy Run Command</button>
       </div>
 
-      <footer>
-        Tip: The page is intentionally minimal — the fun happens in the console. The JavaScript game logic is loaded from <code>index.js</code>.
-      </footer>
-    </div>
-  </main>
-<footer style="
-    margin-top: 50px;
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
-    color: #b1d6cc;
-    opacity: 0.85;
-    font-family: 'Inter', sans-serif;
-">
-  <div style="
-      padding:14px 0;
-      border-top: 1px solid rgba(255,255,255,0.05);
-  ">
-    <p style="margin:6px 0; font-weight:600; letter-spacing:0.3px;">
-      Developed & Designed by <span style="color:#00ffcc;">hpx07</span>
-    </p>
+  <footer class="creative-footer">
+  <h3 class="footer-title">
+    Developed & Designed by <span class="signature">hpx07</span>
+  </h3>
 
-    <p style="margin:6px 0;">
-      GitHub: 
-      <a href="https://github.com/hpx07" target="_blank" style="color:#78ffd6; text-decoration:none;">
-        github.com/hpx07
-      </a>
-    </p>
+  <div class="footer-buttons">
+    <button class="btn-neo" onclick="openLink('https://github.com/hpx07')">
+      <span>GitHub</span>
+    </button>
 
-    <p style="margin:6px 0;">
-      Portfolio:
-      <a href="https://hpx07.netlify.app" target="_blank" style="color:#78ffd6; text-decoration:none;">
-        hpx07.netlify.app
-      </a>
-    </p>
-
-    <p style="margin-top:12px; font-size:0.8rem; opacity:0.75;">
-      © 2025 — All Rights Reserved.
-    </p>
+    <button class="btn-neo" onclick="openLink('https://hpx07.netlify.app')">
+      <span>Portfolio</span>
+    </button>
   </div>
+
+  <p class="foot-copy">© 2025 — All Rights Reserved.</p>
 </footer>
+
+<style>
+  .creative-footer {
+    margin-top: 70px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #b1d6cc;
+    font-family: Inter, sans-serif;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .footer-title {
+    font-size: 1.2rem;
+    margin-bottom: 22px;
+    opacity: 0.9;
+  }
+
+  .signature {
+    color: #00ffcc;
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(0,255,200,0.4);
+    animation: pulseName 2.4s infinite ease-in-out;
+  }
+
+  @keyframes pulseName {
+    0%,100% { opacity: 0.9; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+
+  .footer-buttons {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+
+  .btn-neo {
+    font-family: "SFMono-Regular", monospace;
+    border: none;
+    outline: none;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 10px;
+    background: rgba(0,255,200,0.07);
+    color: #78ffd6;
+    letter-spacing: 0.4px;
+    transition: 0.25s ease;
+    box-shadow:
+      0 0 0 rgba(0,255,200,0.0),
+      inset 0 0 0 rgba(0,255,200,0.0);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-neo:hover {
+    background: rgba(0,255,200,0.14);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+      0 6px 22px rgba(0,255,200,0.18),
+      inset 0 0 14px rgba(0,255,200,0.18);
+  }
+
+  .btn-neo span {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Glow ring animation */
+  .btn-neo::before {
+    content: "";
+    position: absolute;
+    width: 160%;
+    height: 160%;
+    top: -30%;
+    left: -30%;
+    background: radial-gradient(circle, rgba(0,255,200,0.25), transparent 60%);
+    animation: rotateGlow 6s linear infinite;
+    opacity: 0.2;
+  }
+
+  @keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .foot-copy {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    opacity: 0.75;
+  }
+</style>
 
   <!-- Link to external script (your game lives here) -->
   <script src="index.js"></script>
