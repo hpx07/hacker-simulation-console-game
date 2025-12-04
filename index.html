@@ -279,15 +279,17 @@
 </a>
   </h3>
 
-  <div class="footer-buttons">
-    <button class="btn-neo" onclick="openLink('https://github.com/hpx07')">
-      <span>GitHub</span>
-    </button>
+<div class="footer-buttons">
+  <button class="btn-neo" onclick="openLink('https://github.com/hpx07')">
+    <span>GitHub</span>
+  </button>
 
-    <button class="btn-neo" onclick="openLink('https://hpx07.netlify.app')">
-      <span>Portfolio</span>
-    </button>
-  </div>
+  <button class="btn-neo" onclick="openLink('https://hpx07.netlify.app')">
+    <span>Portfolio</span>
+  </button>
+</div>
+
+
 
   <p class="foot-copy">© 2025 — All Rights Reserved.</p>
 </footer>
@@ -298,12 +300,9 @@
   <script src="index.js"></script>
 
   <script>
-  // plain function declaration -> global in non-module scripts
   function openLink(url) {
-    // open in new tab; user popup blockers may block if called not from user gesture
     window.open(url, "_blank", "noopener,noreferrer");
   }
-
     // Helper UI functions (keeps the page friendly)
     function showConsoleHint(){
       // we cannot programmatically open DevTools — so we give the user a helpful message
