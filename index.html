@@ -298,6 +298,12 @@
   <script src="index.js"></script>
 
   <script>
+  // plain function declaration -> global in non-module scripts
+  function openLink(url) {
+    // open in new tab; user popup blockers may block if called not from user gesture
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
     // Helper UI functions (keeps the page friendly)
     function showConsoleHint(){
       // we cannot programmatically open DevTools — so we give the user a helpful message
