@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hacker Simulation — Open Console</title>
+
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --neon:#00ffcc;
+      --accent:#ff4d6d;
+      --glass: rgba(255,255,255,0.04);
+      --mono: "SFMono-Regular", Menlo, Monaco, "Roboto Mono", monospace;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(0,255,200,0.04), transparent 8%),
+        radial-gradient(1000px 500px at 90% 90%, rgba(255,77,109,0.03), transparent 8%),
+        var(--bg);
+      color:#e6f7f3;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      box-sizing:border-box;
+    }
+
+    .card{
+      width:100%;
+      max-width:880px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius:14px;
+      padding:32px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    .title{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+
+    .logo {
+      width:64px;
+      height:64px;
+      border-radius:12px;
+      background: linear-gradient(135deg,var(--neon), var(--accent));
+      display:grid;
+      place-items:center;
+      font-family:var(--mono);
+      font-weight:700;
+      color:#061018;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 40px rgba(0,255,200,0.06);
+    }
+
+    h1{
+      margin:0;
+      font-size:1.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    p.lead{
+      margin:10px 0 18px 0;
+      color: #cfeee6;
+      opacity:0.95;
+    }
+
+    .console-hint{
+      font-family: var(--mono);
+      background: linear-gradient(90deg, rgba(0,255,200,0.06), rgba(255,77,109,0.04));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:12px 14px;
+      border-radius:8px;
+      display:inline-flex;
+      gap:12px;
+      align-items:center;
+      font-size:0.95rem;
+      color:var(--neon);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .kbd {
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:6px;
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.03);
+      color:#bff8ea;
+      font-family: var(--mono);
+      font-weight:700;
+      box-shadow: 0 6px 18px rgba(0,255,200,0.03);
+    }
+
+    .cta{
+      margin-top:20px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .btn{
+      cursor:pointer;
+      padding:10px 16px;
+      border-radius:10px;
+      border:0;
+      font-weight:700;
+      font-family:var(--mono);
+      letter-spacing:0.02em;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+
+    .btn-primary{
+      background: linear-gradient(90deg,var(--neon), #78ffd6);
+      color:#012428;
+    }
+
+    .btn-secondary{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.04);
+      color:#d7fff4;
+    }
+
+    .sparkle {
+      display:inline-block;
+      margin-left:8px;
+      color:var(--accent);
+      animation: blink 1.6s infinite;
+      font-weight:900;
+    }
+
+    @keyframes blink{
+      0%{opacity:1; transform:translateY(0);}
+      50%{opacity:0.35; transform:translateY(-2px);}
+      100%{opacity:1; transform:translateY(0);}
+    }
+
+    footer{
+      margin-top:20px;
+      color:#a6d9cc;
+      font-size:0.8rem;
+      opacity:0.9;
+    }
+
+    @media (max-width:560px){
+      .card{ padding:20px; }
+      h1{ font-size:1.25rem }
+      .logo{ width:56px; height:56px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="title">
+      <div class="logo">HS</div>
+      <div>
+        <h1>Hacker Simulation — Console Game</h1>
+        <p class="lead">A tiny demo that lives in your browser console. For full effect, open DevTools and run the game from <code>index.js</code>.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <div class="console-hint">
+        <span class="kbd">F12</span>
+        <div style="margin-left:6px">
+          <strong>Press</strong> the <span class="kbd" style="margin-left:6px">F12</span> key (or <span class="kbd">Ctrl+Shift+I</span> / <span class="kbd">Cmd+Option+I</span>) to open the console and play.
+        </div>
+        <span class="sparkle">★</span>
+      </div>
+
+      <div class="cta">
+        <button class="btn btn-primary" onclick="showConsoleHint()">Open Console Hint</button>
+        <button class="btn btn-secondary" onclick="copyRunCommand()">Copy Run Command</button>
+      </div>
+
+      <footer>
+        Tip: The page is intentionally minimal — the fun happens in the console. The JavaScript game logic is loaded from <code>index.js</code>.
+      </footer>
+    </div>
+  </main>
+
+  <!-- Link to external script (your game lives here) -->
+  <script src="index.js"></script>
+
+  <script>
+    // Helper UI functions (keeps the page friendly)
+    function showConsoleHint(){
+      // we cannot programmatically open DevTools — so we give the user a helpful message
+      alert("Open DevTools (F12) and switch to the Console tab. Then type: startHackerSim()");
+    }
+
+    function copyRunCommand(){
+      const cmd = "startHackerSim()";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(cmd).then(() => {
+          alert("Copied: " + cmd + " — now open console (F12) and paste it.");
+        }).catch(()=> {
+          prompt("Copy the command below:", cmd);
+        });
+      } else {
+        prompt("Copy the command below:", cmd);
+      }
+    }
+
+    // expose helpers so buttons can call them from the inline handlers
+    window.showConsoleHint = showConsoleHint;
+    window.copyRunCommand = copyRunCommand;
+  </script>
+</body>
+</html>
