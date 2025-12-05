@@ -69,3 +69,7 @@ A browser console-based hacking simulation game. Open your browser's developer c
 ---
 
 *For entertainment purposes only. No actual hacking involved!*
+
+---
+
+## 🛡️ Developer: [HPX07](https://github.com/hpx07/)
